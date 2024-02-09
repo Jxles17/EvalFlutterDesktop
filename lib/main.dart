@@ -36,6 +36,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  String dropdownValue = 'Angelina Joli'; // Déclaration de dropdownValue
 
   @override
   Widget build(BuildContext context) {
@@ -85,38 +86,49 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       Container(
                         margin: new EdgeInsets.symmetric(horizontal: 20.0),
+                        padding: new EdgeInsets.only(left: 20, right: 0),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
                           color: Color.fromARGB(255, 34, 34, 46),
                         ),
                         width: MediaQuery.of(context).size.width / 6,
                         height: MediaQuery.of(context).size.height / 12,
-                        child: const Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.person, // Remplacez cette icône par celle de votre choix
-                              color: Colors.white,
-                              size: 24.0,
-                            ),
-                            Text(
-                              'Angelina Joli', // Remplacez ce texte par celui de votre choix
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16.0,
+                        child: DropdownButton<String>(
+
+                          value: dropdownValue, // Valeur sélectionnée
+                          icon: Icon(Icons.arrow_downward, color: Colors.white), // Icône du bouton déroulant
+                          iconSize: 24,
+                          elevation: 16,
+                          style: TextStyle(color: Colors.white, fontSize: 16.0),
+                          underline: Container(
+                            height: 2,
+                            color: Colors.white,
+                          ),
+                          dropdownColor: Color.fromARGB(255, 34, 34, 46),
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              dropdownValue = newValue!; // Mettre à jour la valeur sélectionnée
+                            });
+                          },
+                          items: <String>['Angelina Joli', 'Documents', 'Settings'] // Liste des options
+                              .map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.person, color: Colors.white), // Icône
+                                  SizedBox(width: 20), // Espace entre l'icône et le texte
+                                  Text(value, style: TextStyle(color: Colors.white)), // Texte de l'option
+                                ],
                               ),
-                            ),
-                            Icon(
-                              Icons.arrow_downward, // Remplacez cette icône par celle de votre choix
-                              color: Colors.white,
-                              size: 24.0,
-                            ),
-                          ],
+                            );
+                          }).toList(),
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(height: 50,),
+                  SizedBox(height: 30,),
                   Row(
                     children: [
                       Column(
@@ -133,34 +145,40 @@ class _MyHomePageState extends State<MyHomePage> {
                                   ),
                                 ),
                                 Container(
-                                  padding: new EdgeInsets.symmetric(horizontal: 20.0),
-                                  margin: new EdgeInsets.only(bottom: 20),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    color: Colors.blue,
-                                  ),
-                                  width: MediaQuery.of(context).size.width / 8,
-                                  height: MediaQuery.of(context).size.height / 14,
-                                  child: const Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Icon(
-                                        Icons.plus_one, // Remplacez cette icône par celle de votre choix
-                                        color: Colors.white,
-                                        size: 24.0,
+                                  height: 40,
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      // Action à effectuer lorsque le bouton est pressé
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      padding: EdgeInsets.symmetric(horizontal: 20.0),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5),
                                       ),
-                                      Text(
-                                        'Add New', // Remplacez ce texte par celui de votre choix
-                                        style: TextStyle(
+                                      primary: Colors.blue,
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Icon(
+                                          Icons.plus_one, // Remplacez cette icône par celle de votre choix
                                           color: Colors.white,
-                                          fontSize: 16.0,
+                                          size: 24.0,
                                         ),
-                                      ),
-                                    ],
+                                        Text(
+                                          'Add New', // Remplacez ce texte par celui de votre choix
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 16.0,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
+                                )
                               ]
                           ),
+                          SizedBox(height: 30),
                           Row(
                             children: [
                               SizedBox(width: 30),
@@ -214,7 +232,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       '1328 files       1.9GB', // Remplacez ce texte par celui de votre choix
                                       style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: 16.0,
+                                        fontSize: 12.0,
                                       ),
                                     ),
                                   ],
@@ -271,7 +289,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       '1328 files       2.9GB', // Remplacez ce texte par celui de votre choix
                                       style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: 16.0,
+                                        fontSize: 12.0,
                                       ),
                                     ),
                                   ],
@@ -328,7 +346,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       '1328 files       1GB', // Remplacez ce texte par celui de votre choix
                                       style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: 16.0,
+                                        fontSize: 12.0,
                                       ),
                                     ),
                                   ],
@@ -385,7 +403,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       '1328 files       7.3GB', // Remplacez ce texte par celui de votre choix
                                       style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: 16.0,
+                                        fontSize: 12.0,
                                       ),
                                     ),
                                   ],
