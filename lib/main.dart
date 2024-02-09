@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '/navigationBar.dart';
+import '/lign_recent_files.dart';
+import '/pie_chart_sample2.dart';
 
 void main() {
   runApp(const MyApp());
@@ -442,32 +444,15 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ),
                                   ],
                                 ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      'XD File', // Remplacez ce texte par celui de votre choix
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 16.0,
-                                      ),
-                                    ),
-                                    Text(
-                                      '01-02-2021', // Remplacez ce texte par celui de votre choix
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 16.0,
-                                      ),
-                                    ),
-                                    Text(
-                                      '3.5mb', // Remplacez ce texte par celui de votre choix
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 16.0,
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                MyLignFiles(iconFile: Icons.file_copy, colorIcon: Colors.pink, textFileName: "XD File", textDate: "01-02-2021", textSize: "3.5mb"),
+                                SizedBox(height: 10),
+                                MyLignFiles(iconFile: Icons.facebook, colorIcon: Colors.pinkAccent, textFileName: "Figma File", textDate: "27-02-2021", textSize: "19.0mb"),
+                                SizedBox(height: 10),
+                                MyLignFiles(iconFile: Icons.file_open, colorIcon: Colors.red, textFileName: "Documents", textDate: "23-02-2021", textSize: "32.5mb"),
+                                SizedBox(height: 10),
+                                MyLignFiles(iconFile: Icons.surround_sound, colorIcon: Colors.orange, textFileName: "Sound File", textDate: "21-02-2021", textSize: "3.5mb"),
+                                SizedBox(height: 10),
+                                MyLignFiles(iconFile: Icons.perm_media, colorIcon: Colors.yellow, textFileName: "Media File", textDate: "23-02-2021", textSize: "2.5gb"),
                               ],
                             ),
                           ),
@@ -492,6 +477,55 @@ class _MyHomePageState extends State<MyHomePage> {
                                     color: Colors.white,
                                     fontSize: 20.0,
                                   ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 100),
+                            Column(
+                              children: [
+                                PieChartSample2(),
+                                SizedBox(height: 50),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Indicator(
+                                      color: Colors.blue,
+                                      text: 'Documents files' ,
+                                      isSquare: true,
+                                      textStyle: TextStyle(color: Colors.white),
+                                    ),
+                                    SizedBox(
+                                      height: 4,
+                                    ),
+                                    Indicator(
+                                      color: Colors.lightBlueAccent,
+                                      text: 'Media files',
+                                      isSquare: true,
+                                      textStyle: TextStyle(color: Colors.white),
+                                    ),
+                                    SizedBox(
+                                      height: 4,
+                                    ),
+                                    Indicator(
+                                      color: Colors.red,
+                                      text: 'Other files',
+                                      isSquare: true,
+                                      textStyle: TextStyle(color: Colors.white),
+                                    ),
+                                    SizedBox(
+                                      height: 4,
+                                    ),
+                                    Indicator(
+                                      color: Colors.orange,
+                                      text: 'Secrets files',
+                                      isSquare: true,
+                                      textStyle: TextStyle(color: Colors.white),
+                                    ),
+                                    SizedBox(
+                                      height: 18,
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),

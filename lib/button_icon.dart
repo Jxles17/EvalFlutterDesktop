@@ -18,7 +18,7 @@ class MyButtonIcon extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 10),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
-            color: isSelected ? const Color.fromARGB(255, 170, 223, 217) : const Color.fromARGB(255, 34, 34, 46)
+            color: isSelected ? const Color.fromARGB(255, 1, 150, 249) : const Color.fromARGB(255, 34, 34, 46)
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
